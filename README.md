@@ -26,11 +26,15 @@ It generates a basic project structure with essential files.
    ```bash
     cd GoGinInitializer
    ```
-3. Build the project:
+3. Install dependencies:
+   ```bash
+    go mod download
+   ```
+4. Build the project:
    ```bash
     go build -o GoGinInitializer
    ```
-4. Run the executable:
+5. Run the executable:
    ```bash
     ./GoGinInitializer
    ```
