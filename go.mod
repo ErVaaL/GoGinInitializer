@@ -1,4 +1,4 @@
-module GoGinInitializer
+module github.com/ervaal/GoGinInitializer
 
 go 1.24.4
 

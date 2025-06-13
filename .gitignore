@@ -1,1 +1,7 @@
 goGinInitializer
+goGinInitializer.exe
+goGinInitializer-linux
+goGinInitializer-mac
+*.exe
+*.out
+
