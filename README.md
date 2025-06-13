@@ -7,7 +7,7 @@ It generates a basic project structure with essential files.
 ### Features
 - Initializes a new Go project with Gin framework
 - Creates a basic directory structure
-- Generates essential files like `main.go`, `go.mod`, and `.gitignore`
+- Generates essential files like `main.go` and `go.mod`
 - Generates a sample route handler
 - Generates a simple Error handler with custom errors
 - Has additional feature that generates full api with --full-api flag, it generates additional directories like models/contracts, models/entities and repositories
