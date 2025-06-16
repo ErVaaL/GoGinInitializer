@@ -1,0 +1,47 @@
+# .github/actions/custom-deploy/action.yml
+name: "Custom Deploy Action"
+description: "Composite action to simulate deployment."
+author: "Your Name"
+
+inputs:
+  environment:
+    description: "Deployment environment"
+    required: true
+  version:
+    description: "Version to deploy"
+    required: false
+    default: "latest"
+  notify-team:
+    description: "Whether to notify the team"
+    required: false
+    default: "true"
+
+outputs:
+  deployment-url:
+    description: "URL of the deployed application"
+  deployment-time:
+    description: "Timestamp of the deployment"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Print deployment info
+      shell: bash
+      run: |
+        echo "Deploying version ${{ inputs.version }} to ${{ inputs.environment }}..."
+        echo "Notify team: ${{ inputs.notify-team }}"
+
+    - name: Simulate deployment
+      shell: bash
+      run: |
+        TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+        echo "::set-output name=deployment-time::$TIMESTAMP"
+        echo "::set-output name=deployment-url::https://example.com/${{ inputs.environment }}/v/${{ inputs.version }}"
+        echo "Deployment completed at $TIMESTAMP"
+
+    - name: Notify team (simulated)
+      if: ${{ inputs.notify-team == 'true' }}
+      shell: bash
+      run: |
+        echo "📣 Notifying team of deployment to ${{ inputs.environment }} (version: ${{ inputs.version }})"
+
