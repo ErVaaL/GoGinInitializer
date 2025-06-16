@@ -51,15 +51,15 @@ func writeFile(path string, content string) {
 
 func generateProject(moduleName string, fullApi bool, initGit bool) error {
 	if _, err := exec.LookPath("go"); err != nil {
-		return fmt.Errorf("Go is not installed or not in PATH")
+		return fmt.Errorf("go is not installed or not in PATH")
 	}
 
 	if err := exec.Command("go", "mod", "init", moduleName).Run(); err != nil {
-		return fmt.Errorf("Failed to initialize Go module: %v", err)
+		return fmt.Errorf("failed to initialize Go module: %v", err)
 	}
 
 	if err := exec.Command("go", "get", "github.com/gin-gonic/gin").Run(); err != nil {
-		return fmt.Errorf("Failed to get gin package: %v", err)
+		return fmt.Errorf("failed to get gin package: %v", err)
 	}
 
 	createDirs(commonDirs)
@@ -68,7 +68,9 @@ func generateProject(moduleName string, fullApi bool, initGit bool) error {
 	}
 
 	if initGit {
-		exec.Command("git", "init").Run()
+		if err := exec.Command("git", "init").Run(); err != nil {
+			return fmt.Errorf("failed to initialize git repository: %v", err)
+		}
 		fmt.Println("Initialized git repository.")
 	}
 

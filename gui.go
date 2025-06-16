@@ -25,7 +25,7 @@ func launchGui() {
 	generateButton := widget.NewButton("Generate", func() {
 		moduleName := moduleEntry.Text
 		if moduleName == "" {
-			dialog.ShowError(fmt.Errorf("Module name is required"), w)
+			dialog.ShowError(fmt.Errorf("module name is required"), w)
 			return
 		}
 

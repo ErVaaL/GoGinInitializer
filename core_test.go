@@ -5,9 +5,11 @@ import (
 	"testing"
 )
 
-func cleanup(paths ...string) {
+func cleanup(t *testing.T, paths ...string) {
 	for _, path := range paths {
-		os.RemoveAll(path)
+		if err := os.RemoveAll(path); err != nil {
+			t.Errorf("Failed to clean up %s: %v", path, err)
+		}
 	}
 }
 
@@ -22,7 +24,7 @@ func TestCreateDirs(t *testing.T) {
 		}
 	}
 
-	cleanup("testdir1", "testdir2")
+	cleanup(t, "testdir1", "testdir2")
 }
 
 func TestWriteFile(t *testing.T) {
@@ -40,5 +42,5 @@ func TestWriteFile(t *testing.T) {
 		t.Errorf("Expected content %q, got %q", content, string(data))
 	}
 
-	cleanup(path)
+	cleanup(t, path)
 }
