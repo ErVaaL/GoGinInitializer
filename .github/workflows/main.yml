@@ -26,11 +26,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
         with:
-          go-version: 1.21
+          go-version: 1.24.4
       - name: Install golangci-lint
         run: |
-          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | \
-            sh -s -- -b $HOME/go/bin v1.54.2
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.1.6
       - name: Add $HOME/go/bin to PATH
         run: echo "$HOME/go/bin" >> $GITHUB_PATH
       - name: Run golangci-lint
@@ -42,7 +41,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
         with:
-          go-version: 1.21
+          go-version: 1.24.4
       - name: Check gofmt
         run: |
           if [ -n "$(gofmt -l .)" ]; then
@@ -55,7 +54,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
         with:
-          go-version: 1.21
+          go-version: 1.24.4
       - name: Install govulncheck
         run: go install golang.org/x/vuln/cmd/govulncheck@latest
       - name: Add $HOME/go/bin to PATH
@@ -68,7 +67,7 @@ jobs:
     needs: [lint, format, security-audit]
     strategy:
       matrix:
-        go-version: [1.21, 1.22]
+        go-version: [1.24, 1.24.4]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
@@ -90,7 +89,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
         with:
-          go-version: 1.21
+          go-version: 1.24.4
       - run: go build -o goGinInitializer .
       - uses: actions/upload-artifact@v4
         with:
