@@ -5,3 +5,5 @@ goGinInitializer-mac
 *.exe
 *.out
 
+goGinInitializerGui
+GoGinInitializer

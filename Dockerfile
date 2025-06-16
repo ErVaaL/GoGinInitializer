@@ -8,7 +8,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-RUN go build -o goGinInitializer .
+RUN go build .
 
 FROM alpine:latest
 
@@ -17,7 +17,7 @@ RUN apk add --no-cache \
     && update-ca-certificates
 
 WORKDIR /app
-COPY --from=builder /app/goGinInitializer .
+COPY --from=builder /app/GoGinInitializer .
 
-ENTRYPOINT ["./goGinInitializer"]
+ENTRYPOINT ["./GoGinInitializer"]
 CMD ["--help"]
