@@ -14,13 +14,6 @@ FROM alpine:latest
 
 RUN apk add --no-cache \
     ca-certificates \
-    libx11 \
-    libxrender \
-    libxext \
-    libxcursor \
-    libxrandr \
-    libxi \
-    gtk+3.0 \
     && update-ca-certificates
 
 WORKDIR /app

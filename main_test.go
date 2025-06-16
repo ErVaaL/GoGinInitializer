@@ -42,4 +42,3 @@ func TestWriteFile(t *testing.T) {
 
 	cleanup(path)
 }
-

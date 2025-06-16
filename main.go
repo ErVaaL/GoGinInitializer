@@ -227,14 +227,14 @@ func main() {
 
 	for _, arg := range args {
 		if arg == "--gui" || arg == "-g" {
-			launchGui()
-			return
+			fmt.Println(" GUI is disabled in this build. Rebuild with: go build -tags gui")
+			os.Exit(1)
 		}
 	}
 
 	if len(args) == 0 {
-		launchGui()
-		return
+		fmt.Println("No arguments provided. Use --help or -h for usage information.")
+		os.Exit(1)
 	}
 
 	runCLI(args)
