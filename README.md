@@ -32,8 +32,13 @@ It generates a basic project structure with essential files.
    ```
 4. Build the project:
    ```bash
-    go build -o GoGinInitializer
+    go build 
    ```
+   or build version with GUI
+   ```bash
+    go build -tags gui
+   ```
+
 5. Run the executable:
    ```bash
     ./GoGinInitializer
@@ -47,7 +52,7 @@ To initialize a new Go project with Gin framework, run the following command:
 ```
 or
 ```bash
-./GoGinInitializer --gui
+./GoGinInitializer [--gui/-g]
 ```
 or
 Launch the GUI by double clicking on the executable and fill in the input fields, then click on the "Generate" button.
