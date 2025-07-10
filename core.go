@@ -13,7 +13,7 @@ var commonDirs = []string{
 }
 
 var fullApiDirs = []string{
-	"models/contracts", "models/transactions", "repositories",
+	"models/contracts", "models/entities", "repositories",
 }
 
 func usage() {
